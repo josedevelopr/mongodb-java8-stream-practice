@@ -189,8 +189,27 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> getIdNameBoroughCuisineWhereNameStartsWithCes() {
-        return null;
+    public List<Map<String, String>> getIdNameBoroughCuisineWhereNameContainsCes()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(r -> r.getName().endsWith("ces"))
+                .peek(r->log.info("Lista : "+r.toString()))
+                .map((r)->{
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
     }
 
     @Override

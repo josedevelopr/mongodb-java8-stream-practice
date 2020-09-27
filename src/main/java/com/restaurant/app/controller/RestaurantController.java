@@ -120,4 +120,11 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getIdNameWhereNameStartsWithWil();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio15")
+    public @ResponseBody
+    ResponseEntity getIdNameBoroughCuisineWhereNameStartsWithCes()
+    {   List<Map<String,String>>lstResultado = restaurantService.getIdNameBoroughCuisineWhereNameContainsCes();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }
