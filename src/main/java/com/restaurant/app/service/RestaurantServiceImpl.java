@@ -434,6 +434,49 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
+    public List<Map<String, String>> geRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {   String sDate1 = "2014-08-11T00:00:00Z";
+            Instant instant = Instant.parse(sDate1);
+            Date dateToFilter = Date.from(instant);
+
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .filter(r -> r.getGrades().length > 1)
+                    .filter(
+                            r -> r.getGrades()[1].getDate().equals(dateToFilter) &&
+                                 r.getGrades()[1].getGrade().equals("A") &&
+                                 r.getGrades()[1].getScore() == 9
+                    )
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        map.put("borough",r.getBorough());
+                        map.put("cuisine",r.getCuisine());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(r -> r.getGrades().length > 1)
+                    .filter(
+                            r -> r.getGrades()[1].getDate().equals(dateToFilter) &&
+                                 r.getGrades()[1].getGrade().equals("A") &&
+                                 r.getGrades()[1].getScore() == 9
+                    )
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
     public List<Map<String,String>> getNameBoroughAndCuisine()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try

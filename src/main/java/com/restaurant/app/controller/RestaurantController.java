@@ -176,4 +176,11 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereGradeAandScore11AndISODate20140811();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio23")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereSecondGradeAandScore9AndISODate20140811();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }

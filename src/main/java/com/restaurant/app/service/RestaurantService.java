@@ -27,5 +27,6 @@ public interface RestaurantService
     List<Map<String, String>> geRestaurantsWhereGradeScoreNotMoreThan10();
     List<Map<String, String>> geRestaurantsWhereCuisineNotAmericanOrChinese();
     List<Map<String, String>> geRestaurantsWhereGradeAandScore11AndISODate20140811();
+    List<Map<String, String>> geRestaurantsWhereSecondGradeAandScore9AndISODate20140811();
 
 }
