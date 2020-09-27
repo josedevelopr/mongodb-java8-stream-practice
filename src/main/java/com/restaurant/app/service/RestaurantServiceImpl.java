@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -228,6 +231,200 @@ public class RestaurantServiceImpl implements RestaurantService
                     map.put("cuisine",r.getCuisine());
                     return map;
                 }).collect(Collectors.toList());
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Restaurant> geRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese()
+    {   List<Restaurant> lstResultado = new ArrayList<>();
+        List<String> filter = Arrays.asList("American ","Chinese");
+        lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(
+                        r -> filter.contains(r.getCuisine()) &&
+                             r.getBorough().equals("Bronx")
+                )
+                .peek(l -> log.info(l.toString()))
+                .collect(Collectors.toList());
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        List<String> filterBorough = Arrays.asList("Staten Island","Queens","Bronx","Brooklyn");
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(r -> filterBorough.contains(r.getBorough()))
+                .map((r) -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                                            .stream()
+                                            .filter(r -> filterBorough.contains(r.getBorough()))
+                                            .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        List<String> filterBorough = Arrays.asList("Staten Island","Queens","Bronx","Brooklyn");
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(r -> !filterBorough.contains(r.getBorough()))
+                .map((r) -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(r -> !filterBorough.contains(r.getBorough()))
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> geRestaurantsWhereGradeScoreNotMoreThan10()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(
+                        r -> Arrays.stream(r.getGrades())
+                                   .noneMatch(g -> g.getScore() > 10)
+
+                )
+                .map((r) -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(
+                            r -> Arrays.stream(r.getGrades())
+                                    .noneMatch(g -> g.getScore() > 10)
+
+                    )
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> geRestaurantsWhereCuisineNotAmericanOrChinese()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        List<String> filterCuisine = Arrays.asList("American ","Chinese");
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(
+                        r -> ! filterCuisine.contains(r.getCuisine()) ||
+                             r.getName().startsWith("Wil")
+                )
+                .map((r) -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(
+                            r -> ! filterCuisine.contains(r.getCuisine()) ||
+                                    r.getName().startsWith("Wil")
+                    )
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+        public List<Map<String, String>> geRestaurantsWhereGradeAandScore11AndISODate20140811()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {   String sDate1 = "2014-08-11T00:00:00Z";
+            Instant instant = Instant.parse(sDate1);
+            Date dateToFilter = Date.from(instant);
+
+            lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(
+                        r -> Arrays.stream(r.getGrades())
+                                   .anyMatch(g -> g.getDate().equals(dateToFilter) &&
+                                                  g.getGrade().equals("A") &&
+                                                  g.getScore() == 11
+                                                  )
+                )
+                .map((r) -> {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    map.put("borough",r.getBorough());
+                    map.put("cuisine",r.getCuisine());
+                    return map;
+                }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(
+                            r -> Arrays.stream(r.getGrades())
+                                    .anyMatch(g -> g.getGrade().equals("A") &&
+                                            g.getScore()==11 &&
+                                            g.getDate().equals(dateToFilter))
+
+                    )
+                    .count();
+            log.info("Total : "+count);
         } catch ( Exception e)
         {   e.printStackTrace();
             lstResultado = new ArrayList<>();

@@ -21,4 +21,11 @@ public interface RestaurantService
     List<Map<String, String>> getIdNameWhereNameStartsWithWil();
     List<Map<String, String>> getIdNameBoroughCuisineWhereNameFinishesCes();
     List<Map<String, String>> getIdNameBoroughCuisineWhereNameContainsReg();
+    List<Restaurant> geRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese();
+    List<Map<String, String>> geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn();
+    List<Map<String, String>> geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn();
+    List<Map<String, String>> geRestaurantsWhereGradeScoreNotMoreThan10();
+    List<Map<String, String>> geRestaurantsWhereCuisineNotAmericanOrChinese();
+    List<Map<String, String>> geRestaurantsWhereGradeAandScore11AndISODate20140811();
+
 }

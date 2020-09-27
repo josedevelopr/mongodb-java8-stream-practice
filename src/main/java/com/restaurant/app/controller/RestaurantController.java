@@ -134,4 +134,46 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getIdNameBoroughCuisineWhereNameContainsReg();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio17")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereCuisineAmericanOrChinese()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio18")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio19")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio20")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereGradeScoreNotMoreThan10()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereGradeScoreNotMoreThan10();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio21")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereCuisineNotAmericanOrChinese()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereCuisineNotAmericanOrChinese();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio22")
+    public @ResponseBody
+    ResponseEntity geRestaurantsWhereGradeAandScore11AndISODate20140811()
+    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereGradeAandScore11AndISODate20140811();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }
