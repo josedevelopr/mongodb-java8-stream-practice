@@ -7,6 +7,15 @@ import java.util.Map;
 
 public interface RestaurantService
 {
-    List<Map<String, String>> getNameBoroughAndCuisine();
     List<Restaurant> findAll();
+    List<Map<String, String>> getNameBoroughAndCuisine();
+    List<Map<String, String>> getNameBoroughCuisineAndRestaurantId();
+    List<Map<String, String>> getNameBoroughRestaurantIdAndZipCode();
+    List<Restaurant> geRestaurantsBoroughBronx();
+    List<Restaurant> geRestaurantsBoroughBronxSkippingFive();
+    List<Restaurant> geRestaurantsGradeScoreMoreNinety();
+    List<Restaurant> geRestaurantsGradeScoreMoreEightyAndLessOneHundred();
+    List<Restaurant> geRestaurantsLocateInLatitudeLessThan();
+    List<Restaurant> geRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan();
+    List<Restaurant> geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
 }

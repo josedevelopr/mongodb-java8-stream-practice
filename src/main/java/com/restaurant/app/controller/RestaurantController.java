@@ -50,4 +50,67 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getNameBoroughAndCuisine();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio03")
+    public @ResponseBody
+    ResponseEntity getNameBoroughCuisineAndRestaurantId()
+    {   List<Map<String,String>>lstResultado = restaurantService.getNameBoroughCuisineAndRestaurantId();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio04")
+    public @ResponseBody
+    ResponseEntity getNameBoroughRestaurantIdAndZipCode()
+    {   List<Map<String,String>>lstResultado = restaurantService.getNameBoroughRestaurantIdAndZipCode();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio05")
+    public @ResponseBody
+    ResponseEntity geRestaurantsBoroughBronx()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsBoroughBronx();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio07")
+    public @ResponseBody
+    ResponseEntity geRestaurantsBoroughBronxSkippingFive()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsBoroughBronxSkippingFive();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio08")
+    public @ResponseBody
+    ResponseEntity geRestaurantsGradeScoreMoreNinety()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsGradeScoreMoreNinety();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio09")
+    public @ResponseBody
+    ResponseEntity geRestaurantsGradeScoreMoreEightyAndLessOneHundred()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsGradeScoreMoreEightyAndLessOneHundred();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio10")
+    public @ResponseBody
+    ResponseEntity geRestaurantsLocateInLatitudeLessThan()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsLocateInLatitudeLessThan();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio11")
+    public @ResponseBody
+    ResponseEntity geRestaurantsCuisineNotAmerican()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio13")
+    public @ResponseBody
+    ResponseEntity geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn()
+    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
+        return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
+    }
 }
