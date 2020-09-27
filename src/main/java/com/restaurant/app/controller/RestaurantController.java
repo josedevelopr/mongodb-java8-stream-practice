@@ -113,4 +113,11 @@ public class RestaurantController
     {   List<Restaurant> lstResultado = restaurantService.geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio14")
+    public @ResponseBody
+    ResponseEntity getIdNameWhereBoroughStartsWithWil()
+    {   List<Map<String,String>>lstResultado = restaurantService.getIdNameWhereNameStartsWithWil();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }

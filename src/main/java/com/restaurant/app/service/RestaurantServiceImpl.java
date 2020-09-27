@@ -167,6 +167,33 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
+    public List<Map<String, String>> getIdNameWhereNameStartsWithWil()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {   lstResultado = restaurantRepository.findAll()
+                .stream()
+                .filter(r -> r.getName().startsWith("Wil"))
+                .peek(r->log.info("Lista : "+r.toString()))
+                .map((r)->{
+                    Map<String, String> map = new HashMap<>();
+                    map.put("_id",r.getId());
+                    map.put("name",r.getName());
+                    return map;
+                }).collect(Collectors.toList());
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getIdNameBoroughCuisineWhereNameStartsWithCes() {
+        return null;
+    }
+
+    @Override
     public List<Map<String,String>> getNameBoroughAndCuisine()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try

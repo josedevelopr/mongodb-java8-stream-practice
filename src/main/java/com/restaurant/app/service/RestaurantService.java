@@ -18,4 +18,6 @@ public interface RestaurantService
     List<Restaurant> geRestaurantsLocateInLatitudeLessThan();
     List<Restaurant> geRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan();
     List<Restaurant> geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
+    List<Map<String, String>> getIdNameWhereNameStartsWithWil();
+    List<Map<String, String>> getIdNameBoroughCuisineWhereNameStartsWithCes();
 }
