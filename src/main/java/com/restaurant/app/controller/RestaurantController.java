@@ -124,7 +124,14 @@ public class RestaurantController
     @GetMapping("/ejercicio15")
     public @ResponseBody
     ResponseEntity getIdNameBoroughCuisineWhereNameStartsWithCes()
-    {   List<Map<String,String>>lstResultado = restaurantService.getIdNameBoroughCuisineWhereNameContainsCes();
+    {   List<Map<String,String>>lstResultado = restaurantService.getIdNameBoroughCuisineWhereNameFinishesCes();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio16")
+    public @ResponseBody
+    ResponseEntity getIdNameBoroughCuisineWhereNameContainsReg()
+    {   List<Map<String,String>>lstResultado = restaurantService.getIdNameBoroughCuisineWhereNameContainsReg();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 }
