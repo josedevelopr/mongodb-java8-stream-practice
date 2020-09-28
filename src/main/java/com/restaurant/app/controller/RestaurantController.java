@@ -239,4 +239,11 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereNameContainsWithmon();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio32")
+    public @ResponseBody
+    ResponseEntity getRestaurantsWhereNameStartsWithMad()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereNameStartsWithMad();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }
