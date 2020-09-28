@@ -211,4 +211,18 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsNameSortedByCuisineAscAndBoroughDesc();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio28")
+    public @ResponseBody
+    ResponseEntity getRestaurantsStreetAddressExists()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsStreetAddressExists();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio29")
+    public @ResponseBody
+    ResponseEntity getRestaurantsWhereCoordFieldIsDouble()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereCoordFieldIsDouble();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }

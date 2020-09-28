@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -610,14 +611,45 @@ public class RestaurantServiceImpl implements RestaurantService
                                     Comparator.comparing(Restaurant::getBorough).reversed())
                     )
                     .map((r) -> {
+                        String exists = r.getAddress().getStreet().isEmpty() ? "false" : "true";
                         Map<String, String> map = new HashMap<>();
                         map.put("_id",r.getId());
-                        map.put("name",r.getName());
+                        map.put("contains_street",(exists));
                         return map;
                     }).collect(Collectors.toList());
 
             Long count = restaurantRepository.findAll()
                     .stream()
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsWhereCoordFieldIsDouble()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> Arrays.stream(r.getAddress().getCoord())
+                                        .anyMatch( i -> BigDecimal.valueOf(i).scale() > 0))
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("address",r.getAddress().toString());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> Arrays.stream(r.getAddress().getCoord())
+                            .anyMatch( i -> BigDecimal.valueOf(i).scale() > 0))
                     .count();
             log.info("Total : "+count);
         } catch ( Exception e)

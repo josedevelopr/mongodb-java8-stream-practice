@@ -13,5 +13,5 @@ import java.util.Date;
 public class Grade
 {   private Date date;
     private String grade;
-    private int score;
+    private double score;
 }

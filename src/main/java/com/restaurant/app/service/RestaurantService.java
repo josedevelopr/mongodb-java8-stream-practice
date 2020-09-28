@@ -33,4 +33,5 @@ public interface RestaurantService
     List<Map<String, String>> getRestaurantsNameSortedByNameDescending();
     List<Map<String, String>> getRestaurantsNameSortedByCuisineAscAndBoroughDesc();
     List<Map<String, String>> getRestaurantsStreetAddressExists();
+    List<Map<String, String>> getRestaurantsWhereCoordFieldIsDouble();
 }
