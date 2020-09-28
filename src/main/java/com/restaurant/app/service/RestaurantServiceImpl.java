@@ -691,6 +691,37 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
+    public List<Map<String, String>> getRestaurantsWhereNameContainsWithmon()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> r.getName().contains("mon"))
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        map.put("borough",r.getBorough());
+                        map.put("longitude",r.getAddress().getCoord()[0]+"");
+                        map.put("latitude",r.getAddress().getCoord()[1]+"");
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> r.getName().contains("mon"))
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
     public List<Map<String,String>> getNameBoroughAndCuisine()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try

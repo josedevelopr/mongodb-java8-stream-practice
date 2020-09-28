@@ -232,4 +232,11 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereScoreGradeReturns0AfterDividedBy7();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio31")
+    public @ResponseBody
+    ResponseEntity getRestaurantsWhereNameContainsWithmon()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereNameContainsWithmon();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }

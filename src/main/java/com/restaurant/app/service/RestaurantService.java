@@ -35,4 +35,5 @@ public interface RestaurantService
     List<Map<String, String>> getRestaurantsStreetAddressExists();
     List<Map<String, String>> getRestaurantsWhereCoordFieldIsDouble();
     List<Map<String, String>> getRestaurantsWhereScoreGradeReturns0AfterDividedBy7();
+    List<Map<String, String>> getRestaurantsWhereNameContainsWithmon();
 }
