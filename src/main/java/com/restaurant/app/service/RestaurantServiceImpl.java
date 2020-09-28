@@ -661,6 +661,36 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
+    public List<Map<String, String>> getRestaurantsWhereScoreGradeReturns0AfterDividedBy7()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> Arrays.stream(r.getGrades())
+                            .anyMatch( g -> g.getScore() % 7 == 0))
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("grades",r.getGrades().toString());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter( r -> Arrays.stream(r.getGrades())
+                            .anyMatch( g -> g.getScore() % 7 == 0))
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
     public List<Map<String,String>> getNameBoroughAndCuisine()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try

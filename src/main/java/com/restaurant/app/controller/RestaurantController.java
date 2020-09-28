@@ -225,4 +225,11 @@ public class RestaurantController
     {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereCoordFieldIsDouble();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
+
+    @GetMapping("/ejercicio30")
+    public @ResponseBody
+    ResponseEntity getRestaurantsWhereScoreGradeReturns0AfterDividedBy7()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereScoreGradeReturns0AfterDividedBy7();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
 }
