@@ -67,50 +67,50 @@ public class RestaurantController
 
     @GetMapping("/ejercicio05")
     public @ResponseBody
-    ResponseEntity geRestaurantsBoroughBronx()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsBoroughBronx();
+    ResponseEntity getRestaurantsBoroughBronx()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsBoroughBronx();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio07")
     public @ResponseBody
-    ResponseEntity geRestaurantsBoroughBronxSkippingFive()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsBoroughBronxSkippingFive();
+    ResponseEntity getRestaurantsBoroughBronxSkippingFive()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsBoroughBronxSkippingFive();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio08")
     public @ResponseBody
-    ResponseEntity geRestaurantsGradeScoreMoreNinety()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsGradeScoreMoreNinety();
+    ResponseEntity getRestaurantsGradeScoreMoreNinety()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsGradeScoreMoreNinety();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio09")
     public @ResponseBody
-    ResponseEntity geRestaurantsGradeScoreMoreEightyAndLessOneHundred()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsGradeScoreMoreEightyAndLessOneHundred();
+    ResponseEntity getRestaurantsGradeScoreMoreEightyAndLessOneHundred()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsGradeScoreMoreEightyAndLessOneHundred();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio10")
     public @ResponseBody
-    ResponseEntity geRestaurantsLocateInLatitudeLessThan()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsLocateInLatitudeLessThan();
+    ResponseEntity getRestaurantsLocateInLatitudeLessThan()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsLocateInLatitudeLessThan();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio11")
     public @ResponseBody
-    ResponseEntity geRestaurantsCuisineNotAmerican()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan();
+    ResponseEntity getRestaurantsCuisineNotAmerican()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio13")
     public @ResponseBody
-    ResponseEntity geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
+    ResponseEntity getRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
@@ -137,50 +137,78 @@ public class RestaurantController
 
     @GetMapping("/ejercicio17")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereCuisineAmericanOrChinese()
-    {   List<Restaurant> lstResultado = restaurantService.geRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese();
+    ResponseEntity getRestaurantsWhereCuisineAmericanOrChinese()
+    {   List<Restaurant> lstResultado = restaurantService.getRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese();
         return  new ResponseEntity<List<Restaurant>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio18")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn();
+    ResponseEntity getRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio19")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn();
+    ResponseEntity getRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio20")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereGradeScoreNotMoreThan10()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereGradeScoreNotMoreThan10();
+    ResponseEntity getRestaurantsWhereGradeScoreNotMoreThan10()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereGradeScoreNotMoreThan10();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio21")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereCuisineNotAmericanOrChinese()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereCuisineNotAmericanOrChinese();
+    ResponseEntity getRestaurantsWhereCuisineNotAmericanOrChinese()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereCuisineNotAmericanOrChinese();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio22")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereGradeAandScore11AndISODate20140811()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereGradeAandScore11AndISODate20140811();
+    ResponseEntity getRestaurantsWhereGradeAandScore11AndISODate20140811()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereGradeAandScore11AndISODate20140811();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 
     @GetMapping("/ejercicio23")
     public @ResponseBody
-    ResponseEntity geRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
-    {   List<Map<String,String>>lstResultado = restaurantService.geRestaurantsWhereSecondGradeAandScore9AndISODate20140811();
+    ResponseEntity getRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereSecondGradeAandScore9AndISODate20140811();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio24")
+    public @ResponseBody
+    ResponseEntity getRestaurantsWhereSecondAddressMore42AndUpto52()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsWhereSecondAddressMore42AndUpto52();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio25")
+    public @ResponseBody
+    ResponseEntity getRestaurantsNameSortedByName()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsNameSortedByName();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio26")
+    public @ResponseBody
+    ResponseEntity getRestaurantsNameSortedByNameDescending()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsNameSortedByNameDescending();
+        return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
+    }
+
+    @GetMapping("/ejercicio27")
+    public @ResponseBody
+    ResponseEntity getRestaurantsNameSortedByCuisineAscAndBoroughDesc()
+    {   List<Map<String,String>>lstResultado = restaurantService.getRestaurantsNameSortedByCuisineAscAndBoroughDesc();
         return  new ResponseEntity<List<Map<String,String>>>(lstResultado, HttpStatus.OK);
     }
 }

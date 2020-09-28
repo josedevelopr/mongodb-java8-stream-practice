@@ -68,7 +68,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsBoroughBronx()
+    public List<Restaurant> getRestaurantsBoroughBronx()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                                            .stream()
@@ -79,7 +79,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsBoroughBronxSkippingFive()
+    public List<Restaurant> getRestaurantsBoroughBronxSkippingFive()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -91,7 +91,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsGradeScoreMoreNinety()
+    public List<Restaurant> getRestaurantsGradeScoreMoreNinety()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -105,7 +105,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsGradeScoreMoreEightyAndLessOneHundred()
+    public List<Restaurant> getRestaurantsGradeScoreMoreEightyAndLessOneHundred()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -119,7 +119,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsLocateInLatitudeLessThan()
+    public List<Restaurant> getRestaurantsLocateInLatitudeLessThan()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -132,7 +132,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan()
+    public List<Restaurant> getRestaurantsCuisineNotAmericanScoreMoreSeventyAndLatitudeLessThan()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -151,7 +151,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn()
+    public List<Restaurant> getRestaurantsCuisineNotAmericanGradePointAAndBoroughBrooklyn()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         lstResultado = restaurantRepository.findAll()
                 .stream()
@@ -240,7 +240,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Restaurant> geRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese()
+    public List<Restaurant> getRestaurantsWhereBorouhgBronxCuisineAmericanOrChinese()
     {   List<Restaurant> lstResultado = new ArrayList<>();
         List<String> filter = Arrays.asList("American ","Chinese");
         lstResultado = restaurantRepository.findAll()
@@ -255,7 +255,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> geRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
+    public List<Map<String, String>> getRestaurantsWhereBoroughStateIslandOrQueensOrBrooklyn()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         List<String> filterBorough = Arrays.asList("Staten Island","Queens","Bronx","Brooklyn");
         try
@@ -285,7 +285,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> geRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
+    public List<Map<String, String>> getRestaurantsWhereBoroughIsNotStateIslandOrQueensOrBrooklyn()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         List<String> filterBorough = Arrays.asList("Staten Island","Queens","Bronx","Brooklyn");
         try
@@ -315,7 +315,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> geRestaurantsWhereGradeScoreNotMoreThan10()
+    public List<Map<String, String>> getRestaurantsWhereGradeScoreNotMoreThan10()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
 
         try
@@ -353,7 +353,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> geRestaurantsWhereCuisineNotAmericanOrChinese()
+    public List<Map<String, String>> getRestaurantsWhereCuisineNotAmericanOrChinese()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         List<String> filterCuisine = Arrays.asList("American ","Chinese");
         try
@@ -389,7 +389,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-        public List<Map<String, String>> geRestaurantsWhereGradeAandScore11AndISODate20140811()
+        public List<Map<String, String>> getRestaurantsWhereGradeAandScore11AndISODate20140811()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try
         {   String sDate1 = "2014-08-11T00:00:00Z";
@@ -434,7 +434,7 @@ public class RestaurantServiceImpl implements RestaurantService
     }
 
     @Override
-    public List<Map<String, String>> geRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
+    public List<Map<String, String>> getRestaurantsWhereSecondGradeAandScore9AndISODate20140811()
     {   List<Map<String,String>> lstResultado = new ArrayList<>();
         try
         {   String sDate1 = "2014-08-11T00:00:00Z";
@@ -466,6 +466,158 @@ public class RestaurantServiceImpl implements RestaurantService
                                  r.getGrades()[1].getGrade().equals("A") &&
                                  r.getGrades()[1].getScore() == 9
                     )
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsWhereSecondAddressMore42AndUpto52()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .filter(
+                            r -> r.getAddress().getCoord()[1] > 42 &&
+                                 r.getAddress().getCoord()[1] < 52
+                    )
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        map.put("borough",r.getBorough());
+                        map.put("cuisine",r.getCuisine());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .filter(r -> r.getGrades().length > 1)
+                    .filter(
+                            r -> r.getAddress().getCoord()[1] > 42 &&
+                                    r.getAddress().getCoord()[1] < 52
+                    )
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsNameSortedByName()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                                    .stream()
+                                    .sorted(Comparator.comparing(Restaurant::getName))
+                                    .map((r) -> {
+                                        Map<String, String> map = new HashMap<>();
+                                        map.put("_id",r.getId());
+                                        map.put("name",r.getName());
+                                        return map;
+                                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .sorted(Comparator.comparing(Restaurant::getName))
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsNameSortedByNameDescending()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .sorted(Comparator.comparing(Restaurant::getName).reversed())
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsNameSortedByCuisineAscAndBoroughDesc()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .sorted(
+                            Comparator.comparing(Restaurant::getCuisine).thenComparing(
+                            Comparator.comparing(Restaurant::getBorough).reversed())
+                    )
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
+                    .count();
+            log.info("Total : "+count);
+        } catch ( Exception e)
+        {   e.printStackTrace();
+            lstResultado = new ArrayList<>();
+        }
+
+        return lstResultado;
+    }
+
+    @Override
+    public List<Map<String, String>> getRestaurantsStreetAddressExists()
+    {   List<Map<String,String>> lstResultado = new ArrayList<>();
+        try
+        {
+            lstResultado = restaurantRepository.findAll()
+                    .stream()
+                    .sorted(
+                            Comparator.comparing(Restaurant::getCuisine).thenComparing(
+                                    Comparator.comparing(Restaurant::getBorough).reversed())
+                    )
+                    .map((r) -> {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("_id",r.getId());
+                        map.put("name",r.getName());
+                        return map;
+                    }).collect(Collectors.toList());
+
+            Long count = restaurantRepository.findAll()
+                    .stream()
                     .count();
             log.info("Total : "+count);
         } catch ( Exception e)
